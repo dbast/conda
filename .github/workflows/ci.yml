@@ -19,6 +19,8 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        if: ${{ matrix.platform }} != "ubuntu-latest"
       - name: Setup
         run : |
           make env-lint
